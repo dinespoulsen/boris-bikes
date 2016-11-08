@@ -11,4 +11,14 @@ describe DockingStation do
     subject { bike = DockingStation.new.release_bike;  bike.working?}
     it {is_expected.to be true}
   end
+
+  describe "it docks a bike" do
+    subject {
+      bike1 = Bike.new
+      docking_station = DockingStation.new
+      docking_station.dock(bike1)
+      docking_station.check(bike1)
+    }
+    it {is_expected.to be true}
+  end
 end
