@@ -5,6 +5,9 @@ describe DockingStation do
 
   it 'releases working bikes' do
     bike = subject.release_bike
+    puts "=" * 20
+    puts subject
+    puts "=" * 20
     expect(bike).to be_working
   end
 
