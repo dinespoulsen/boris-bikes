@@ -5,11 +5,8 @@ class DockingStation
 attr_reader :bike
 
   def release_bike
-      if @bike == nil
-        raise "Docking station is empty"
-      else
-        @bike
-      end
+    fail "no bikes available" unless @bike
+    @bike
   end
 
   def dock(bike)
