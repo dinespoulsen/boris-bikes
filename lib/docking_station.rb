@@ -19,6 +19,7 @@ DEFAULT_CAPACITY = 20
     working_bike = working_bikes.pop
     @bikes.delete(working_bike)
     return working_bike
+    #@bikes.pop
   end
 
   def dock(bike)
