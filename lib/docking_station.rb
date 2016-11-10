@@ -1,3 +1,5 @@
+require_relative './bike.rb'
+
 class DockingStation
 
 attr_reader :bike
@@ -8,6 +10,7 @@ attr_reader :bike
   end
 
   def dock(bike)
+    fail "dock is full" if @bike
     @bike = bike
   end
 
