@@ -30,5 +30,16 @@ describe DockingStation do
       end
     end
 
+    describe 'changing capacity of docking station' do
+      it 'should return the new capacity' do
+        station = DockingStation.new
+        expect(station.capacity).to eq 20
+      end
+      it 'user should be able to change capacity' do
+        station = DockingStation.new(23)
+        expect(station.capacity).to eq 23
+      end
+    end
+
 
 end
