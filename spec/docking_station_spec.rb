@@ -20,6 +20,16 @@ describe DockingStation do
 
         expect { station.release_bike }.to raise_error "No bikes available"
       end
+
+      it "releases only a working bike" do
+        bike1 = Bike.new
+        bike2 = Bike.new
+        bike1.report_broken
+        station = DockingStation.new
+        station.dock(bike2)
+        station.dock(bike1)
+        expect(station.release_bike).to eq bike2
+      end
     end
 
     describe '#dock(bike)' do
@@ -40,6 +50,5 @@ describe DockingStation do
         expect(station.capacity).to eq 23
       end
     end
-
 
 end

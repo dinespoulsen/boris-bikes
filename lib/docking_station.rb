@@ -15,7 +15,11 @@ DEFAULT_CAPACITY = 20
 
   def release_bike
     fail "No bikes available" if empty?
-    @bikes.pop
+    working_bikes = @bikes.select {|bike| bike.working?}
+    working_bike = working_bikes.pop
+    @bikes.delete(working_bike)
+    return working_bike
+    #@bikes.pop
   end
 
   def dock(bike)
@@ -30,7 +34,7 @@ private
   end
 
   def empty?
-    bikes.empty?
+    bikes.select {|bike| bike.working?}.empty?
   end
 
 
