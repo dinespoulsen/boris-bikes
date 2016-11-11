@@ -17,14 +17,14 @@ end
 
  describe '#release_bike' do
   it "raises an error when there's no working bike available" do
-    bike = double (:bike)
+    bike = double("bike", :report_broken => true, :broken => true)
     bike.report_broken
     subject.dock(bike)
    expect { subject.release_bike }.to raise_error 'No bikes available'
   end
   it "releases only working bikes" do
-    bike1 = double (:bike1)
-    bike2 = double (:bike2)
+    bike1 = double("bike1", :broken => false)
+    bike2 = double("bike", :report_broken => true, :broken => true)
     bike2.report_broken
     subject.dock(bike1)
     subject.dock(bike2)
