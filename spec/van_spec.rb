@@ -1,6 +1,7 @@
 require "van"
 require "bike"
 require "docking_station"
+require "garage"
 
 describe Van do
     it "should collect only broken bikes from docking stations" do
@@ -16,6 +17,7 @@ describe Van do
 
   it "should deliver to the garage" do
     docking_station = DockingStation.new
+    garage = Garage.new
     bike = Bike.new
     bike.report_broken
     bikes = [bike]
