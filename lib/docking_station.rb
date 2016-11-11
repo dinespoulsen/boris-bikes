@@ -13,7 +13,8 @@ class DockingStation
  def release_bike
   @working_bikes = bikes.select { |bike| !bike.broken }
   fail 'No bikes available' if empty?
-  @working_bikes.pop
+  working_bike = @working_bikes.pop
+  @bikes.delete(working_bike)
  end
 
  def dock(bike)
@@ -22,7 +23,7 @@ class DockingStation
  end
 
 
-private
+#private
 
 attr_reader :bikes
 
