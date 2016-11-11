@@ -1,4 +1,4 @@
-require_relative "bike.rb"
+require_relative "docking_station"
 
 class Van
 
@@ -9,7 +9,9 @@ def initialize
 end
 
 def collect(docking_station)
-  docking_station.bikes.each {|bike| @bikes << bike }
+  broken_bikes = docking_station.bikes.select {|bike| bike.broken }
+  docking_station.bikes.select! {|bike| !bike.broken }
+  @bikes = broken_bikes
 end
 
 end
