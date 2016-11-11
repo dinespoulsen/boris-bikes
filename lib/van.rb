@@ -16,7 +16,8 @@ end
 
 def deliver(garage)
   garage_bikes = bikes.each {|bike| garage.bikes << bike}
-
+  @bikes = []
+  garage_bikes
 end
 
 end
