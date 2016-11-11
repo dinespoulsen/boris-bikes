@@ -25,4 +25,22 @@ describe Van do
     subject.collect(docking_station)
     expect(subject.deliver(garage)).to eq bikes
   end
+
+  it "should collect the working bikes from the garage" do
+    garage = Garage.new
+    bike1 = Bike.new
+    bike2 = Bike.new
+    bike2.report_broken
+    garage.bikes << bike1 << bike2
+    expect(subject.collect(garage)).to eq [bike1]
+  end
+
+  it "should deliver working bikes to the docking station" do
+    bike1 = Bike.new
+    bike2 = Bike.new
+    bike1.report_broken
+    subject.bikes << bike1 << bike2
+    docking_station = DockingStation.new
+    expect(subject.deliver(docking_station)).to eq [bike2]
+  end
 end

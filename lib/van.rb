@@ -1,4 +1,5 @@
 require_relative "docking_station"
+require_relative "garage"
 
 class Van
 
@@ -8,16 +9,28 @@ def initialize
  @bikes = []
 end
 
-def collect(docking_station)
-  broken_bikes = docking_station.bikes.select {|bike| bike.broken }
-  docking_station.bikes.select! {|bike| !bike.broken }
-  @bikes = broken_bikes
+def collect(place)
+  if place.is_a?(Garage)
+    fixed_bikes = place.bikes.select {|bike| !bike.broken}
+    place.bikes.select! {|bike| bike.broken}
+    @bikes = fixed_bikes
+  else
+    broken_bikes = place.bikes.select {|bike| bike.broken }
+    place.bikes.select! {|bike| !bike.broken }
+    @bikes = broken_bikes
+  end
 end
 
-def deliver(garage)
-  garage_bikes = bikes.each {|bike| garage.bikes << bike}
-  @bikes = []
-  garage_bikes
+def deliver(place)
+  if place.is_a?(DockingStation)
+    bikes.each {|bike| place.bikes << bike if bike.broken == false}
+    @bikes = []
+    place.bikes
+  else
+    bikes.each {|bike| place.bikes << bike if bike.broken == true}
+    @bikes = []
+    place.bikes
+  end
 end
 
 end

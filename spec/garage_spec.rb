@@ -16,7 +16,7 @@ describe Garage do
     bike = Bike.new
     bike.report_broken
     subject.bikes << bike
-    expect(subject.fix(subject.bikes)).to eq true
+    expect(subject.fix_bikes).to eq true
   end
 
 

@@ -9,8 +9,8 @@ class Garage
     @bikes = []
   end
 
-  def fix(bikes)
-    fixed_bikes = bikes.each {|bike| bike.broken = false }
-    fixed_bikes.all? {|bike| bike.broken == false }
+  def fix_bikes
+    bikes.each {|bike| bike.broken = false }
+    bikes.all? {|bike| bike.broken == false }
   end
 end
